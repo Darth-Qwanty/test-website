@@ -2,12 +2,13 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from "../assets/Pokémon_Pikachu_art.png"
 import {FaBars, FaTimes,FaRegUser} from "react-icons/fa"
-import { Dark_Theme } from './Dark_Theme';
 import { useRef } from "react";
+import useTheme from '../useTheme';
 
 
 
 function Nav_Bar() {
+    const [theme, toggleTheme] = useTheme();
     const navigate=useNavigate();
 
     function Homehook(){
@@ -29,10 +30,13 @@ function Nav_Bar() {
             <header>
                 <img src={Logo} className="Logo" width="80px" height="80px" onClick={Homehook}></img>
                 <nav ref={navRef}>
-                    <NavLink to="/"><a className='NavBarItem'>Home</a></NavLink>
-                    <NavLink to="/pokemon_info"><a className='NavBarItem'>Pokemon</a></NavLink>
-                    <NavLink to="/none"><a className='NavBarItem'>Element</a></NavLink>
-                    <button onClick={User}><FaRegUser/> User Dashboard </button>
+                    <button onClick={toggleTheme} className='theme-switcher'>
+                        Switch to {theme ==="light" ? "dark 🌙" :"light ☀️"}
+                    </button>
+                    <NavLink to="/"><a className='NavBarItem' onClick={showNavBar}>Home</a></NavLink>
+                    <NavLink to="/pokemon_info"><a className='NavBarItem' onClick={showNavBar}>Pokemon</a></NavLink>
+                    <NavLink to="/none"><a className='NavBarItem' onClick={showNavBar}>Element</a></NavLink>
+                    <button onClick={User} className="user-btn"><FaRegUser/> User Dashboard </button>
                     <button className="nav-btn nav-close-btn" onClick={showNavBar}>
                         <FaTimes/>
                     </button>
