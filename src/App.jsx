@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login_copy setShowNavBar={setShowNavBar}/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route path="/test-website/register" element={<Registration setShowNavBar={setShowNavBar}/>}/>
+          <Route path="/register" element={<Registration setShowNavBar={setShowNavBar}/>}/>
           <Route path="/pokemon_info" element={<Pokemon_api/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path="*" element={<NotFound/>}/>
